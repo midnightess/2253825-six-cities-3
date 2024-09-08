@@ -1,4 +1,4 @@
-import MainPage from '../pages/main-page';
+import MainPage from '../main-pages/main-page';
 
 
 type AppOfferProps = {
