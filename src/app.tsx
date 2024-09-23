@@ -1,13 +1,50 @@
 import MainPage from './pages/main-page/main-page';
-
+import LoginPage from './pages/login-page/login-page';
+import FavoritesPage from './pages/favorites-page/favorites-page';
+import OfferPage from './pages/offer-page/offer-page';
+import ErrorMessage from './components/error-message/error-message';
+import PrivateRoute from './components/privat-route/private-route';
+import { Route, BrowserRouter, Routes } from 'react-router-dom';
+import { AppRoute, AuthorizationStatus } from './const/const';
 
 type AppOfferProps = {
-  offerCount: number;
+  OfferCount: number;
 }
 
-function App({offerCount}: AppOfferProps): JSX.Element {
+function App({OfferCount: offerCount}: AppOfferProps): JSX.Element {
   return (
-    <MainPage offerCount={offerCount} />
+    <BrowserRouter>
+      <Routes>
+        <Route
+          path={AppRoute.Main}
+          element ={<MainPage OfferCount = {offerCount}/>}
+        />
+        <Route
+          path={AppRoute.Login}
+          element ={<LoginPage/>}
+        />
+        <Route
+          path={AppRoute.Favorites}
+          element ={
+            <PrivateRoute authorizationStatus = {AuthorizationStatus.NoAuth}>
+              <FavoritesPage/>
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path={AppRoute.Offer}
+          element ={<OfferPage/>}
+        />
+        <Route
+          path={AppRoute.Error}
+          element ={<ErrorMessage/>}
+        />
+        <Route
+          path="*"
+          element={<ErrorMessage/>}
+        />
+      </Routes>
+    </BrowserRouter>
   );
 }
 
