@@ -7,7 +7,7 @@ type AppOfferProps = {
 
 function App({offerCount}: AppOfferProps): JSX.Element {
   return (
-    <MainPage offerCounts={offerCount} />
+    <MainPage offerCount={offerCount} />
   );
 }
 

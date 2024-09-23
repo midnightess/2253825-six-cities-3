@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom/client';
 import App from './app';
 
 
-const OFFERS_COUNT = 5;
+const OFFER_COUNT = 5;
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -11,6 +11,6 @@ const root = ReactDOM.createRoot(
 
 root.render(
   <React.StrictMode>
-    <App offerCount = {OFFERS_COUNT}/>
+    <App offerCount = {OFFER_COUNT}/>
   </React.StrictMode>
 );
