@@ -1,11 +1,11 @@
 import CardOffer from '../../components/card/card';
 
 type MainPageProps = {
-  OfferCount: number;
+  offerCount: number;
 }
 
 
-function MainPage ({OfferCount: offerCount}: MainPageProps): JSX.Element {
+function MainPage ({offerCount}: MainPageProps): JSX.Element {
 
   return (
 
