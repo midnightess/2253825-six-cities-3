@@ -4,12 +4,12 @@ import { AppRoute } from '../../const/const';
 
 function ErrorMessage (): JSX.Element {
   return (
-    <Link to={AppRoute.Main}>
-      <div>
-        <h1>404 Not Found</h1>
+    <div>
+      <h1>404 Not Found</h1>
+      <Link to={AppRoute.Main}>
         <p>Перейти на главную страницу</p>
-      </div>
-    </Link>
+      </Link>
+    </div>
   );
 }
 
