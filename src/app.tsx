@@ -8,16 +8,16 @@ import { Route, BrowserRouter, Routes } from 'react-router-dom';
 import { AppRoute, AuthorizationStatus } from './const/const';
 
 type AppOfferProps = {
-  OfferCount: number;
+  offerCount: number;
 }
 
-function App({OfferCount: offerCount}: AppOfferProps): JSX.Element {
+function App({offerCount: OfferCount}: AppOfferProps): JSX.Element {
   return (
     <BrowserRouter>
       <Routes>
         <Route
           path={AppRoute.Main}
-          element ={<MainPage OfferCount = {offerCount}/>}
+          element ={<MainPage OfferCount = {OfferCount}/>}
         />
         <Route
           path={AppRoute.Login}
