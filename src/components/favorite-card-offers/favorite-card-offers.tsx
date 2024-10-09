@@ -1,4 +1,4 @@
-import type { Offer } from '../../types/offers';
+import type { Offer } from '../../mocks/offers';
 
 
 type FavoriteOfferProps = {
