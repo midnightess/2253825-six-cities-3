@@ -13,7 +13,7 @@ root.render(
   <React.StrictMode>
     <App
       offerCount = {OFFER_COUNT}
-      OfferProps = {offersMock}
+      offerProps = {offersMock}
     />
 
   </React.StrictMode>

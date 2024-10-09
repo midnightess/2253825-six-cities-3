@@ -2,11 +2,11 @@ import useDocumentTitle from '../../hooks/document-title';
 
 
 type LoginPagesProps = {
-  Title: string;
+  title: string;
 }
 
 
-function LoginPage ({Title: title}: LoginPagesProps): JSX.Element {
+function LoginPage ({title: title}: LoginPagesProps): JSX.Element {
   useDocumentTitle(title);
 
   return (

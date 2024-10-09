@@ -1,4 +1,5 @@
-import MainPages from './pages/main-page/main-page';
+import MainPage from './pages/main-page/main-page';
+import {HelmetProvider} from 'react-helmet-async';
 import LoginPage from './pages/login-page/login-page';
 import FavoritesPage from './pages/favorites-page/favorites-page';
 import OfferPage from './pages/offer-page/offer-page';
@@ -10,44 +11,47 @@ import type { Offers } from './mocks/offers';
 
 type AppOfferProps = {
   offerCount: number;
-  OfferProps: Offers;
+  offerProps: Offers;
+  //offers: Offer[];
 }
 
-function App({offerCount: OfferCount, OfferProps: offers}: AppOfferProps): JSX.Element {
-  return (
-    <BrowserRouter>
-      <Routes>
-        <Route
-          path={AppRoute.Main}
-          element ={<MainPages offerCount = {OfferCount} Title = {TitleDescription.MainPage} Offers = {offers}/>}
-        />
+function App({ offerCount: offerCount, offerProps: offers}: AppOfferProps,): JSX.Element {
 
-        <Route
-          path={AppRoute.Login}
-          element ={<LoginPage Title = {TitleDescription.LoginPage}/>}
-        />
-        <Route
-          path={AppRoute.Favorites}
-          element ={
-            <PrivateRoute authorizationStatus = {AuthorizationStatus.Auth}>
-              <FavoritesPage Title = {TitleDescription.FavoritePage} Offers = {offers}/>
-            </PrivateRoute>
-          }
-        />
-        <Route
-          path={`${AppRoute.Offer}/:offerId`}
-          element ={<OfferPage Title = {TitleDescription.OfferPage}/>}
-        />
-        <Route
-          path={AppRoute.Error}
-          element ={<ErrorMessage Title = {TitleDescription.ErrorPage}/>}
-        />
-        <Route
-          path="*"
-          element={<ErrorMessage Title = {TitleDescription.ErrorPage}/>}
-        />
-      </Routes>
-    </BrowserRouter>
+  return (
+    <HelmetProvider>
+      <BrowserRouter>
+        <Routes>
+          <Route
+            path={AppRoute.Main}
+            element ={<MainPage offerCount = { offerCount} title = {TitleDescription.MainPage} offers = {offers}/>}
+          />
+          <Route
+            path={AppRoute.Login}
+            element ={<LoginPage title = {TitleDescription.LoginPage}/>}
+          />
+          <Route
+            path={AppRoute.Favorites}
+            element ={
+              <PrivateRoute authorizationStatus = {AuthorizationStatus.Auth}>
+                <FavoritesPage title = {TitleDescription.FavoritePage} offers = {offers}/>
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path={`${AppRoute.Offer}/:offerId`}
+            element ={<OfferPage title = {TitleDescription.OfferPage}/>}
+          />
+          <Route
+            path={AppRoute.Error}
+            element ={<ErrorMessage title = {TitleDescription.ErrorPage}/>}
+          />
+          <Route
+            path="*"
+            element={<ErrorMessage title = {TitleDescription.ErrorPage}/>}
+          />
+        </Routes>
+      </BrowserRouter>
+    </HelmetProvider>
   );
 }
 

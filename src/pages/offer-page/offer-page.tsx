@@ -3,11 +3,11 @@ import useDocumentTitle from '../../hooks/document-title';
 
 
 type OfferPagesProps = {
-  Title: string;
+  title: string;
 }
 
 
-function OfferPage ({Title: title} : OfferPagesProps) : JSX.Element {
+function OfferPage ({title: title} : OfferPagesProps) : JSX.Element {
   useDocumentTitle(title);
 
   return(

@@ -4,10 +4,10 @@ import useDocumentTitle from '../../hooks/document-title';
 
 
 type OfferPagesProps = {
-  Title: string;
+  title: string;
 }
 
-function ErrorMessage ({Title: title} : OfferPagesProps): JSX.Element {
+function ErrorMessage ({title: title} : OfferPagesProps): JSX.Element {
   useDocumentTitle(title);
 
   return (

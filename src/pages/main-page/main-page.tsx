@@ -5,12 +5,12 @@ import type { Offers } from '../../mocks/offers';
 
 type MainPagesProps = {
   offerCount: number;
-  Title: string;
-  Offers: Offers;
+  title: string;
+  offers: Offers;
 }
 
 
-function MainPages ({offerCount: OfferCount, Title: title, Offers: offers}: MainPagesProps): JSX.Element {
+function MainPage ({ offerCount: offerCount, title: title, offers: offers}: MainPagesProps): JSX.Element {
   useDocumentTitle(title);
 
   return (
@@ -86,7 +86,7 @@ function MainPages ({offerCount: OfferCount, Title: title, Offers: offers}: Main
           <div className="cities__places-container container">
             <section className="cities__places places">
               <h2 className="visually-hidden">Places</h2>
-              <b className="places__found"> {OfferCount} places to stay in Amsterdam</b>
+              <b className="places__found"> {offerCount} places to stay in Amsterdam</b>
               <form className="places__sorting" action="#" method="get">
                 <span className="places__sorting-caption">Sort by</span>
                 <span className="places__sorting-type" tabIndex={0}>
@@ -103,7 +103,7 @@ function MainPages ({offerCount: OfferCount, Title: title, Offers: offers}: Main
                 </ul>
               </form>
 
-              <ListOffers Offers = {offers}/>
+              <ListOffers offers = {offers}/>
 
             </section>
             <div className="cities__right-section">
@@ -117,4 +117,4 @@ function MainPages ({offerCount: OfferCount, Title: title, Offers: offers}: Main
 }
 
 
-export default MainPages;
+export default MainPage;

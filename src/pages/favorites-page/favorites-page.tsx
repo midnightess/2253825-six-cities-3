@@ -4,12 +4,12 @@ import type { Offers } from '../../mocks/offers';
 
 
 type FavoritePagesProps = {
-  Title: string;
-  Offers: Offers;
+  title: string;
+  offers: Offers;
 }
 
 
-function FavoritesPage ({Title: title, Offers: offers}: FavoritePagesProps): JSX.Element {
+function FavoritesPage ({title: title, offers: offers}: FavoritePagesProps): JSX.Element {
   const favoritesOffer = offers.filter((offer) => (offer.isFavorite) ? offer.isFavorite : '');
   useDocumentTitle(title);
 
