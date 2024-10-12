@@ -2,10 +2,10 @@ import type { Offer } from '../../mocks/offers';
 
 
 type FavoriteOfferProps = {
-  Offer: Offer;
+  offer: Offer;
 }
 
-function FavoriteCardOffer ({Offer: offer}: FavoriteOfferProps): JSX.Element {
+function FavoriteCardOffer ({offer}: FavoriteOfferProps): JSX.Element {
   return (
     <article className="favorites__card place-card">
       <div className="place-card__mark">

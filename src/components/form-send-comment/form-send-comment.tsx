@@ -1,44 +1,143 @@
-import { Link } from 'react-router-dom';
-import type { Offer } from '../../mocks/offers';
-import { AppRoute } from '../../const/const';
+import {useState} from 'react';
 
-type CardPagesProps = {
-  offer: Offer;
-  onMouseEnter?: () => void;
-  onMouseLeave?: () => void;
-}
+type CommentState = {
+  comment: string;
+  ratingOffer: string;
+};
 
-function CardOffer ({offer, onMouseEnter, onMouseLeave}: CardPagesProps) : JSX.Element{
 
-  return(
-    <article className="cities__card place-card" onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave}>
-      <div className="cities__image-wrapper place-card__image-wrapper">
-        <Link to={`${AppRoute.Offer}/${offer.id}`} >
-          <img className="place-card__image" src= {offer.previewImage} width="260" height="200" alt="Place image"/>
-        </Link>
+function FormSendComment (): JSX.Element {
+
+  const [comment, setComment] = useState<CommentState>({
+    comment: '',
+    ratingOffer: ''
+  });
+
+
+  return (
+    <form className="reviews__form form" action="#" method="post">
+      <label className="reviews__label form__label" htmlFor="review">
+        Your review
+      </label>
+      <div className="reviews__rating-form form__rating" onChange={(evt) => {
+        if (evt.target instanceof HTMLInputElement) {
+          setComment({
+            ...comment,
+            ratingOffer: evt.target.defaultValue
+          });
+        }
+      }}
+      >
+        <input
+          className="form__rating-input visually-hidden"
+          name="rating"
+          defaultValue={5}
+          id="5-stars"
+          type="radio"
+        />
+        <label
+          htmlFor="5-stars"
+          className="reviews__rating-label form__rating-label"
+          title="perfect"
+        >
+          <svg className="form__star-image" width={37} height={33}>
+            <use xlinkHref="#icon-star" />
+          </svg>
+        </label>
+        <input
+          className="form__rating-input visually-hidden"
+          name="rating"
+          defaultValue={4}
+          id="4-stars"
+          type="radio"
+        />
+        <label
+          htmlFor="4-stars"
+          className="reviews__rating-label form__rating-label"
+          title="good"
+        >
+          <svg className="form__star-image" width={37} height={33}>
+            <use xlinkHref="#icon-star" />
+          </svg>
+        </label>
+        <input
+          className="form__rating-input visually-hidden"
+          name="rating"
+          defaultValue={3}
+          id="3-stars"
+          type="radio"
+        />
+        <label
+          htmlFor="3-stars"
+          className="reviews__rating-label form__rating-label"
+          title="not bad"
+        >
+          <svg className="form__star-image" width={37} height={33}>
+            <use xlinkHref="#icon-star" />
+          </svg>
+        </label>
+        <input
+          className="form__rating-input visually-hidden"
+          name="rating"
+          defaultValue={2}
+          id="2-stars"
+          type="radio"
+        />
+        <label
+          htmlFor="2-stars"
+          className="reviews__rating-label form__rating-label"
+          title="badly"
+        >
+          <svg className="form__star-image" width={37} height={33}>
+            <use xlinkHref="#icon-star" />
+          </svg>
+        </label>
+        <input
+          className="form__rating-input visually-hidden"
+          name="rating"
+          defaultValue={1}
+          id="1-star"
+          type="radio"
+        />
+        <label
+          htmlFor="1-star"
+          className="reviews__rating-label form__rating-label"
+          title="terribly"
+        >
+          <svg className="form__star-image" width={37} height={33}>
+            <use xlinkHref="#icon-star" />
+          </svg>
+        </label>
       </div>
-      <div className="place-card__info">
-        <div className="place-card__price-wrapper">
-          <div className="place-card__price">
-            <b className="place-card__price-value">&euro;{offer.price}</b>
-            <span className="place-card__price-text">&#47;&nbsp;night</span>
-          </div>
-          <button className="place-card__bookmark-button place-card__bookmark-button--active button" type="button"/>
-        </div>
-        <div className="place-card__rating rating">
-          <div className="place-card__stars rating__stars">
-            <span style={{ width: (offer.rating / 5) * 100}}></span>
-            <span className="visually-hidden">Rating</span>
-          </div>
-        </div>
-        <h2 className="place-card__name">
-          <a href="#">{offer.title}</a>
-        </h2>
-        <p className="place-card__type">{offer.type}</p>
+      <textarea
+        className="reviews__textarea form__textarea"
+        id="review"
+        name="review"
+        placeholder="Tell how was your stay, what you like and what can be improved"
+        defaultValue={''}
+        onChange= {(evt) => setComment({
+          ...comment,
+          comment: evt.target.value
+        })}
+      />
+      <div className="reviews__button-wrapper">
+        <p className="reviews__help">
+          To submit review please make sure to set{''}
+          <span className="reviews__star">rating</span> and describe
+          your stay with at least{''}
+          <b className="reviews__text-amount">50 characters</b>.
+        </p>
+        <button
+          className="reviews__submit form__submit button"
+          type="submit"
+          disabled
+        >
+          Submit
+        </button>
       </div>
-    </article>
+    </form>
   );
 }
 
 
-export default CardOffer;
+export default FormSendComment;

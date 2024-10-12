@@ -10,8 +10,10 @@ type MainPageProps = {
 
 
 function MainPage (props: MainPageProps): JSX.Element {
+
   const { title, offers} = props;
   useDocumentTitle(title);
+
   return (
     <div className="page page--gray page--main">
       <header className="header">

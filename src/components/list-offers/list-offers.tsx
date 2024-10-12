@@ -1,6 +1,6 @@
 import { Offer } from '../../mocks/offers';
 import CardOffer from '../card/card';
-import {useState} from 'react';
+import { useState } from 'react';
 
 
 type ListOffersProps = {
