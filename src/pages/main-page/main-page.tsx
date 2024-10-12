@@ -1,18 +1,17 @@
 import ListOffers from '../../components/list-offers/list-offers';
 import useDocumentTitle from '../../hooks/document-title';
-import type { Offers } from '../../mocks/offers';
+import type { Offer } from '../../mocks/offers';
 
 
-type MainPagesProps = {
-  offerCount: number;
+type MainPageProps = {
   title: string;
-  offers: Offers;
+  offers: Offer[];
 }
 
 
-function MainPage ({ offerCount: offerCount, title: title, offers: offers}: MainPagesProps): JSX.Element {
+function MainPage (props: MainPageProps): JSX.Element {
+  const { title, offers} = props;
   useDocumentTitle(title);
-
   return (
     <div className="page page--gray page--main">
       <header className="header">
@@ -86,7 +85,7 @@ function MainPage ({ offerCount: offerCount, title: title, offers: offers}: Main
           <div className="cities__places-container container">
             <section className="cities__places places">
               <h2 className="visually-hidden">Places</h2>
-              <b className="places__found"> {offerCount} places to stay in Amsterdam</b>
+              <b className="places__found"> {offers.length} places to stay in Amsterdam</b>
               <form className="places__sorting" action="#" method="get">
                 <span className="places__sorting-caption">Sort by</span>
                 <span className="places__sorting-type" tabIndex={0}>

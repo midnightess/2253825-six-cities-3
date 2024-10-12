@@ -7,15 +7,13 @@ import ErrorMessage from './components/error-message/error-message';
 import PrivateRoute from './components/privat-route/privat-route';
 import { Route, BrowserRouter, Routes } from 'react-router-dom';
 import { AppRoute, AuthorizationStatus, TitleDescription } from './const/const';
-import type { Offers } from './mocks/offers';
+import type { Offer } from './mocks/offers';
 
 type AppOfferProps = {
-  offerCount: number;
-  offerProps: Offers;
-  //offers: Offer[];
+  offers: Offer[];
 }
 
-function App({ offerCount: offerCount, offerProps: offers}: AppOfferProps,): JSX.Element {
+function App({offers}: AppOfferProps,): JSX.Element {
 
   return (
     <HelmetProvider>
@@ -23,7 +21,7 @@ function App({ offerCount: offerCount, offerProps: offers}: AppOfferProps,): JSX
         <Routes>
           <Route
             path={AppRoute.Main}
-            element ={<MainPage offerCount = { offerCount} title = {TitleDescription.MainPage} offers = {offers}/>}
+            element ={<MainPage title = {TitleDescription.MainPage} offers = {offers}/>}
           />
           <Route
             path={AppRoute.Login}
