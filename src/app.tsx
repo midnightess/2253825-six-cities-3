@@ -7,7 +7,8 @@ import ErrorMessage from './components/error-message/error-message';
 import PrivateRoute from './components/privat-route/privat-route';
 import { Route, BrowserRouter, Routes } from 'react-router-dom';
 import { AppRoute, AuthorizationStatus, TitleDescription } from './const/const';
-import type { Offer } from './mocks/offers';
+import type { Offer } from './types/types';
+
 
 type AppOfferProps = {
   offers: Offer[];

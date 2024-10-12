@@ -1,11 +1,11 @@
 import FavoriteCardOffer from '../../components/favorite-card-offers/favorite-card-offers';
 import useDocumentTitle from '../../hooks/document-title';
-import type { Offers } from '../../mocks/offers';
+import type { Offer } from '../../types/types';
 
 
 type FavoritePagesProps = {
   title: string;
-  offers: Offers;
+  offers: Offer[];
 }
 
 

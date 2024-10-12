@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import type { Offer } from '../../mocks/offers';
+import type { Offer } from '../../types/types';
 import { AppRoute } from '../../const/const';
 
 type CardPagesProps = {

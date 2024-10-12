@@ -1,6 +1,6 @@
 import ListOffers from '../../components/list-offers/list-offers';
 import useDocumentTitle from '../../hooks/document-title';
-import type { Offer } from '../../mocks/offers';
+import type { Offer } from '../../types/types';
 
 
 type MainPageProps = {
