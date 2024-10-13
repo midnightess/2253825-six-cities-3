@@ -1,14 +1,20 @@
-import CardOffer from '../../components/card/card';
+import ListOffers from '../../components/list-offers/list-offers';
+import useDocumentTitle from '../../hooks/document-title';
+import type { Offer } from '../../types/types';
+
 
 type MainPageProps = {
-  OfferCount: number;
+  title: string;
+  offers: Offer[];
 }
 
 
-function MainPage ({OfferCount: offerCount}: MainPageProps): JSX.Element {
+function MainPage (props: MainPageProps): JSX.Element {
+
+  const { title, offers} = props;
+  useDocumentTitle(title);
 
   return (
-
     <div className="page page--gray page--main">
       <header className="header">
         <div className="container">
@@ -81,7 +87,7 @@ function MainPage ({OfferCount: offerCount}: MainPageProps): JSX.Element {
           <div className="cities__places-container container">
             <section className="cities__places places">
               <h2 className="visually-hidden">Places</h2>
-              <b className="places__found"> {offerCount} places to stay in Amsterdam</b>
+              <b className="places__found"> {offers.length} places to stay in Amsterdam</b>
               <form className="places__sorting" action="#" method="get">
                 <span className="places__sorting-caption">Sort by</span>
                 <span className="places__sorting-type" tabIndex={0}>
@@ -97,15 +103,9 @@ function MainPage ({OfferCount: offerCount}: MainPageProps): JSX.Element {
                   <li className="places__option" tabIndex={0}>Top rated first</li>
                 </ul>
               </form>
-              <div className="cities__places-list places__list tabs__content">
 
-                <CardOffer/>
-                <CardOffer/>
-                <CardOffer/>
-                <CardOffer/>
-                <CardOffer/>
+              <ListOffers offers = {offers}/>
 
-              </div>
             </section>
             <div className="cities__right-section">
               <section className="cities__map map"></section>
@@ -114,7 +114,6 @@ function MainPage ({OfferCount: offerCount}: MainPageProps): JSX.Element {
         </div>
       </main>
     </div>
-
   );
 }
 

@@ -1,4 +1,13 @@
-function LoginPage () : JSX.Element {
+import useDocumentTitle from '../../hooks/document-title';
+
+
+type LoginPagesProps = {
+  title: string;
+}
+
+
+function LoginPage ({title: title}: LoginPagesProps): JSX.Element {
+  useDocumentTitle(title);
 
   return (
     <div className="page page--gray page--login">

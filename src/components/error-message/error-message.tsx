@@ -1,14 +1,19 @@
 import { Link } from 'react-router-dom';
 import { AppRoute } from '../../const/const';
+import useDocumentTitle from '../../hooks/document-title';
 
 
-function ErrorMessage (): JSX.Element {
+type OfferPagesProps = {
+  title: string;
+}
+
+function ErrorMessage ({title: title} : OfferPagesProps): JSX.Element {
+  useDocumentTitle(title);
+
   return (
     <div>
       <h1>404 Not Found</h1>
-      <Link to={AppRoute.Main}>
-        <p>Перейти на главную страницу</p>
-      </Link>
+      <Link to={AppRoute.Main}><p> Перейти на главную страницу</p></Link>
     </div>
   );
 }
