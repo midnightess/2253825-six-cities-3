@@ -18,7 +18,7 @@ function ListOffers ({offers}: ListOffersProps): JSX.Element {
         <CardOffer
           key = {offer.id}
           offer = {offer}
-          onMouseEnter={() => setActiveCardId(offer.id)}
+          onMouseEnter={() => activeCardId(offer.id)}
           onMouseLeave={() => setActiveCardId(null)}
         />
       ))};
