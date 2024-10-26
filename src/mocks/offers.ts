@@ -1,7 +1,7 @@
-import { Offers } from '../types/types';
+import { Offer } from '../types/types';
 
 
-const offersMock: Offers = [
+const offersMock: Offer[] = [
   {
     'id': 'e10a67d3-8f00-4093-a489-855c6a0dac97',
     'title': 'Nice, cozy, warm big bed apartment',

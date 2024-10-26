@@ -1,4 +1,5 @@
 import useDocumentTitle from '../../hooks/document-title';
+import { Helmet } from 'react-helmet-async';
 
 
 type LoginPagesProps = {
@@ -11,6 +12,9 @@ function LoginPage ({title: title}: LoginPagesProps): JSX.Element {
 
   return (
     <div className="page page--gray page--login">
+      <Helmet>
+        <title>Six Cities Login</title>
+      </Helmet>
       <header className="header">
         <div className="container">
           <div className="header__wrapper">

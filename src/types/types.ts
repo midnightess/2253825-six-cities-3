@@ -41,7 +41,5 @@ location: OfferLocation;
 id:string;
 }
 
-type Offers = Offer[];
 
-
-export type {Offers, Offer};
+export type { Offer };
