@@ -1,6 +1,8 @@
 import { Link } from 'react-router-dom';
 import type { Offer } from '../../types/types';
 import { AppRoute } from '../../const/const';
+import { useNavigate } from 'react-router-dom';
+
 
 type CardPagesProps = {
   offer: Offer;
@@ -10,8 +12,14 @@ type CardPagesProps = {
 
 function CardOffer ({offer, onMouseEnter, onMouseLeave}: CardPagesProps) : JSX.Element{
 
+  const navigate = useNavigate();
+
   return(
-    <article className="cities__card place-card" onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave}>
+    <article className="cities__card place-card"
+      onMouseEnter={onMouseEnter}
+      onClick={() => navigate(`${AppRoute.Offer}/${offer.id}`)}
+      onMouseLeave={onMouseLeave}
+    >
       <div className="cities__image-wrapper place-card__image-wrapper">
         <Link to={`${AppRoute.Offer}/${offer.id}`} >
           <img className="place-card__image" src= {offer.previewImage} width="260" height="200" alt="Place image"/>

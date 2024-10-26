@@ -1,7 +1,10 @@
 import ListOffers from '../../components/list-offers/list-offers';
 import useDocumentTitle from '../../hooks/document-title';
 import type { Offer } from '../../types/types';
-
+import MapComponent from '../../components/map/map';
+import FilterCities from '../../components/filter-cities/filter-cities';
+import { useState } from 'react';
+import { Cities } from '../../const/const';
 
 type MainPageProps = {
   title: string;
@@ -12,6 +15,61 @@ type MainPageProps = {
 function MainPage (props: MainPageProps): JSX.Element {
 
   const { title, offers} = props;
+
+  const [selectedPoint, setSelectedPoint] = useState<Offer | undefined>(undefined);
+  const [selectedFilterCity, setSelectedFilterCity] = useState(Cities.Amsterdam);
+
+  const citiesToFilter = offers.filter((city, index) => {
+    if (city.city.name === selectedFilterCity) {
+
+      return offers[index];
+    }
+  });
+
+  const citiesToMap = citiesToFilter.map((offer) => {
+
+    const points = {
+      title: offer.city.name,
+      lat: offer.city.location.latitude,
+      lng: offer.city.location.longitude,
+      zoom: offer.city.location.zoom,
+    };
+
+    return points;
+  });
+
+  const cityToMap = citiesToMap[0];
+
+  const pointsOffersToMap = citiesToFilter.map((offer) => {
+
+    const points = {
+      title: offer.city.name,
+      lat: offer.location.latitude,
+      lng: offer.location.longitude,
+      zoom: offer.location.zoom,
+      id: offer.id
+    };
+
+    return points;
+  });
+
+  function handleListItemHover (idOffer: string) {
+    offers.find((offer, index: number) => {
+
+      if (offer.id === idOffer){
+        setSelectedPoint(offers[index]);
+      }
+    });
+  }
+
+  function onClickFilterCity (cityFilter: string) {
+    setSelectedFilterCity(cityFilter);
+  }
+
+  function onLeaveMouseOffer () {
+    setSelectedPoint(undefined);
+  }
+
   useDocumentTitle(title);
 
   return (
@@ -47,47 +105,16 @@ function MainPage (props: MainPageProps): JSX.Element {
 
       <main className="page__main page__main--index">
         <h1 className="visually-hidden">Cities</h1>
-        <div className="tabs">
-          <section className="locations container">
-            <ul className="locations__list tabs__list">
-              <li className="locations__item">
-                <a className="locations__item-link tabs__item" href="#">
-                  <span>Paris</span>
-                </a>
-              </li>
-              <li className="locations__item">
-                <a className="locations__item-link tabs__item" href="#">
-                  <span>Cologne</span>
-                </a>
-              </li>
-              <li className="locations__item">
-                <a className="locations__item-link tabs__item" href="#">
-                  <span>Brussels</span>
-                </a>
-              </li>
-              <li className="locations__item">
-                <a className="locations__item-link tabs__item tabs__item--active">
-                  <span>Amsterdam</span>
-                </a>
-              </li>
-              <li className="locations__item">
-                <a className="locations__item-link tabs__item" href="#">
-                  <span>Hamburg</span>
-                </a>
-              </li>
-              <li className="locations__item">
-                <a className="locations__item-link tabs__item" href="#">
-                  <span>Dusseldorf</span>
-                </a>
-              </li>
-            </ul>
-          </section>
-        </div>
+
+        <FilterCities onClickFilterCity = {onClickFilterCity}/>
+
         <div className="cities">
           <div className="cities__places-container container">
             <section className="cities__places places">
               <h2 className="visually-hidden">Places</h2>
-              <b className="places__found"> {offers.length} places to stay in Amsterdam</b>
+
+              <b className="places__found"> {citiesToFilter.length} places to stay in {selectedFilterCity}</b>
+
               <form className="places__sorting" action="#" method="get">
                 <span className="places__sorting-caption">Sort by</span>
                 <span className="places__sorting-type" tabIndex={0}>
@@ -104,12 +131,12 @@ function MainPage (props: MainPageProps): JSX.Element {
                 </ul>
               </form>
 
-              <ListOffers offers = {offers}/>
+              <ListOffers offers = {citiesToFilter} onMouseEnter = {handleListItemHover} onMouseLeave={onLeaveMouseOffer}/>
 
             </section>
-            <div className="cities__right-section">
-              <section className="cities__map map"></section>
-            </div>
+
+            <MapComponent pointsToMap={pointsOffersToMap} cityToMap = {cityToMap} selectedPoint={selectedPoint} />
+
           </div>
         </div>
       </main>

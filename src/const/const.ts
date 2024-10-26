@@ -20,6 +20,56 @@ enum TitleDescription {
   ErrorPage = '6 cities: error'
 }
 
+const Cities = {
+  Paris: 'Paris',
+  Cologne: 'Cologne',
+  Brussels: 'Brussels',
+  Amsterdam: 'Amsterdam',
+  Hamburg: 'Hamburg',
+  Dusseldorf: 'Dusseldorf',
+};
 
-export { AppRoute, AuthorizationStatus, TitleDescription };
+const CitiesForFilter = ['Paris', 'Cologne', 'Brussels', 'Amsterdam', 'Hamburg', 'Dusseldorf'];
+
+const URL_MARKER_DEFAULT = 'img/pin.svg';
+
+const URL_MARKER_CURRENT = 'img/pin-active.svg';
+
+const CURRENT_ICON = {
+  iconUrl: URL_MARKER_CURRENT,
+  iconSize: [40, 40],
+  iconAnchor: [20, 40],
+};
+
+const DEFAULT_ICON = {
+  iconUrl: URL_MARKER_DEFAULT,
+  iconSize: [40, 40],
+  iconAnchor: [20, 40],
+};
+
+const DEFAULT_DESCRIPTION = {
+  title: 'Amsterdam',
+  lat: 52.3909553943508,
+  lng: 4.85309666406198,
+  zoom: 13,
+};
+
+const LengthComment = {
+  MIN: 50,
+  MAX: 300
+};
+
+
+export {
+  AppRoute,
+  AuthorizationStatus,
+  TitleDescription,
+  Cities,
+  CitiesForFilter,
+  URL_MARKER_DEFAULT,
+  CURRENT_ICON,
+  DEFAULT_ICON,
+  DEFAULT_DESCRIPTION,
+  LengthComment
+};
 

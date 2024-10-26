@@ -41,5 +41,27 @@ location: OfferLocation;
 id:string;
 }
 
+type CityLocation = {
+  title: string;
+  lat: number;
+  lng: number;
+  zoom: number;
+};
 
-export type { Offer };
+type PointOfferLocation = {
+  title: string;
+  lat: number;
+  lng: number;
+  zoom: number;
+  id: string;
+}
+
+type IconToMap = {
+  iconUrl: string;
+  iconSize: [number, number];
+  iconAnchor: [number, number];
+}
+
+
+export type { Offer, CityLocation, PointOfferLocation, IconToMap};
+

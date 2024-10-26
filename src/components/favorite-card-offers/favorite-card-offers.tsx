@@ -8,9 +8,9 @@ type FavoriteOfferProps = {
 function FavoriteCardOffer ({offer}: FavoriteOfferProps): JSX.Element {
   return (
     <article className="favorites__card place-card">
-      <div className="place-card__mark">
-        <span>Premium</span>
-      </div>
+
+      {(offer.isPremium) ? <div className="place-card__mark"><span>Premium</span> </div> : '' }
+
       <div className="favorites__image-wrapper place-card__image-wrapper">
         <a href="#">
           <img className="place-card__image" src={offer.previewImage} width="150" height="110" alt="Place image"/>
@@ -36,9 +36,9 @@ function FavoriteCardOffer ({offer}: FavoriteOfferProps): JSX.Element {
           </div>
         </div>
         <h2 className="place-card__name">
-          <a href="#">Nice, cozy, warm big bed apartment</a>
+          <a href="#">{offer.title}</a>
         </h2>
-        <p className="place-card__type">Apartment</p>
+        <p className="place-card__type">{offer.type}</p>
       </div>
     </article>
   );
